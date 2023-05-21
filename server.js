@@ -29,9 +29,9 @@ app.use('/expert', expertRoutes)
 app.use('/admin', adminRoutes)
 const __filename = path.resolve(import.meta.url.slice(7));
 const __dirname = path.dirname(__filename);
-app.use(express.static(path.join(__dirname, "./client/build")))
+app.use(express.static(path.join(__dirname, "../client/build")))
 app.get('*', function (req, res) {
-    res.sendFile(path.join(__dirname, "./client/build/index.html"))
+    res.sendFile(path.join(__dirname, "../client/build/index.html"))
 })
 //rest api
 app.get("/", (req, res) => {
