@@ -21,18 +21,18 @@ app.use(cookieParser())
 app.use(cors());
 // app.use(cors());
 app.use(express.json());
+
+//routes
+app.use('/api/v1/auth', userRoutes)
+app.use('/expert', expertRoutes)
+
+app.use('/admin', adminRoutes)
 const __filename = path.resolve(import.meta.url.slice(7));
 const __dirname = path.dirname(__filename);
 app.use(express.static(path.join(__dirname, "./client/build")))
 app.get('*', function (req, res) {
     res.sendFile(path.join(__dirname, "./client/build/index.html"))
 })
-//routes
-app.use('/api/v1/auth', userRoutes)
-app.use('/expert', expertRoutes)
-
-app.use('/admin', adminRoutes)
-
 //rest api
 app.get("/", (req, res) => {
     res.send("<h1>Welcome to Fx Signals app</h1>");
